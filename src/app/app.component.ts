@@ -10,6 +10,8 @@ export class AppComponent {
 
   palabra ='MELON';
   palabraOculta ='';
+  intentos = 0;
+ 
 
 
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
@@ -22,6 +24,9 @@ export class AppComponent {
 
   }
   comprobar(letra) {
+
+/*      Lllamado a función que recibe como parámetro la letra que ingresa el usuario y en base a ello valida si dicha letra es parte de la palabra oculta */
+    this.ValidaExistenciaLetra(letra);
 
     const palabraOcultaArr = this.palabraOculta.split(' ');
 
@@ -37,5 +42,20 @@ export class AppComponent {
 
 
   }
+/*    Función que recibe como parámetro letra que ingresa el usuario y valida y esta forma parte de toda la palabra oculta que el usuario debe adivinar. */
+   ValidaExistenciaLetra (letra) {
+
+   if (this.palabra.indexOf(letra) >= 0  ) {
+     console.log('Letra si existe ' + letra);
+   }else{
+     console.log('Letra no existe ' + letra);
+     this.intentos  ++;
+
+
+   }
+
+   }
+
+
 
 }
