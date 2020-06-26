@@ -9,7 +9,7 @@ export class AppComponent {
 
 
   palabra ='MELON';
-  palabraOculta = '';
+  palabraOculta ='';
 
 
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
@@ -21,6 +21,21 @@ export class AppComponent {
     this.palabraOculta = '_ '.repeat(this.palabra.length);
 
   }
+  comprobar(letra) {
 
+    const palabraOcultaArr = this.palabraOculta.split(' ');
+
+    for (let i = 0; i < this.palabra.length; i ++ ) {
+      if (this.palabra[i] === letra)  {
+
+        palabraOcultaArr[i] = letra;
+      }
+
+    }
+
+    this.palabraOculta = palabraOcultaArr.join(' ');
+
+
+  }
 
 }
