@@ -9,9 +9,15 @@ export class AppComponent {
 
 
   palabra ='MELON';
+
   palabraOculta ='';
+
   intentos = 0;
- 
+
+  gano = false;
+
+  perdio = false;
+
 
 
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
@@ -31,6 +37,7 @@ export class AppComponent {
     const palabraOcultaArr = this.palabraOculta.split(' ');
 
     for (let i = 0; i < this.palabra.length; i ++ ) {
+
       if (this.palabra[i] === letra)  {
 
         palabraOcultaArr[i] = letra;
@@ -39,16 +46,51 @@ export class AppComponent {
     }
 
     this.palabraOculta = palabraOcultaArr.join(' ');
+    this.ValidaUsuarioGana();
 
 
   }
 /*    Función que recibe como parámetro letra que ingresa el usuario y valida y esta forma parte de toda la palabra oculta que el usuario debe adivinar. */
-   ValidaExistenciaLetra (letra) {
+
+  ValidaUsuarioGana(){
+
+    const PalabraArr = this.palabraOculta.split(' ');
+
+    const PalabraEvaluar = PalabraArr.join('');
+
+    console.log(PalabraEvaluar);
+
+    if (PalabraEvaluar === this.palabra) {
+      this.gano = true;
+
+      console.log("Usuario ganó");
+
+    }
+
+    if (this.intentos >= 9) {
+
+      this.perdio = true;
+
+      console.log("Usuario perdió");
+
+
+
+    }
+
+  }
+
+
+
+   ValidaExistenciaLetra(letra){
 
    if (this.palabra.indexOf(letra) >= 0  ) {
-     console.log('Letra si existe ' + letra);
+
+     //console.log('Letra si existe ' + letra);
+
    }else{
-     console.log('Letra no existe ' + letra);
+
+     //console.log('Letra no existe ' + letra);
+
      this.intentos  ++;
 
 
