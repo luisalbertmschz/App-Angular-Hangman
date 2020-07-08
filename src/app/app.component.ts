@@ -62,14 +62,16 @@ export class AppComponent {
 
     if (PalabraEvaluar === this.palabra) {
       this.gano = true;
-
+      this.playAudioGana();
       console.log("Usuario ganó");
+
 
     }
 
     if (this.intentos >= 9) {
 
       this.perdio = true;
+      this.playAudioPierde();
 
       console.log("Usuario perdió");
 
@@ -97,6 +99,21 @@ export class AppComponent {
    }
 
    }
+
+  playAudioGana(){
+    let audio = new Audio();
+    audio.src = 'https://www.myinstants.com/media/sounds/final-fantasy-v-music-victory-fanfare.mp3';
+    audio.load();
+    audio.play();
+  }
+
+  playAudioPierde() {
+    let audio = new Audio();
+    audio.src = 'https://www.myinstants.com/media/sounds/sad_3.mp3';
+    audio.load();
+    audio.play();
+  }
+
 
 
 
